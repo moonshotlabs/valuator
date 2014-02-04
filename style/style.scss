@@ -1,0 +1,78 @@
+@import 'grid';
+@import 'normalize.css';
+
+h1, h2, h3, h4, h5 {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+}
+
+body {
+  background: #ddd;
+  color: #222;
+  font-family: "Helvetica Neue";
+  font-weight: 200;
+  font-size: 18px;
+}
+
+input {
+  font-size: 18px;
+}
+
+.row {
+  line-height: 1.8;
+}
+
+.row-title {
+  text-align: right;
+  text-transform: uppercase;
+  margin-right: 50px;
+  color: #666;
+}
+
+
+//---- color shifts for each round ----//
+$base-round-amount-color: #268bd2;
+$round-color-rotation: 30;
+.series-A-amount {
+  color: $base-round-amount-color;
+}
+.series-B-amount {
+  color: adjust_hue($base-round-amount-color, $round-color-rotation * 1);
+}
+.series-C-amount {
+  color: adjust_hue($base-round-amount-color, $round-color-rotation * 2);
+}
+.series-D-amount {
+  color: adjust_hue($base-round-amount-color, $round-color-rotation * 3);
+}
+.series-E-amount {
+  color: adjust_hue($base-round-amount-color, $round-color-rotation * 4);
+}
+.series-F-amount {
+  color: adjust_hue($base-round-amount-color, $round-color-rotation * 5);
+}
+
+$base-round-valuation-color: #33cc33;
+.series-A-valuation {
+  color: $base-round-valuation-color;
+}
+.series-B-valuation {
+  color: adjust_hue($base-round-valuation-color, $round-color-rotation * 1);
+}
+.series-C-valuation {
+  color: adjust_hue($base-round-valuation-color, $round-color-rotation * 2);
+}
+.series-D-valuation {
+  color: adjust_hue($base-round-valuation-color, $round-color-rotation * 3);
+}
+.series-E-valuation {
+  color: adjust_hue($base-round-valuation-color, $round-color-rotation * 4);
+}
+.series-F-valuation {
+  color: adjust_hue($base-round-valuation-color, $round-color-rotation * 5);
+}
+
+
+
+
