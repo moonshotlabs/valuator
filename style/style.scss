@@ -1,6 +1,18 @@
 @import 'grid';
 @import 'normalize.css';
 
+@mixin flex-box() {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 h1, h2, h3, h4, h5 {
   margin: 0;
   padding: 0;
@@ -8,7 +20,8 @@ h1, h2, h3, h4, h5 {
 }
 
 body {
-  background: #ddd;
+  margin: 0px;
+  // background: #ddd;
   color: #222;
   font-family: "Helvetica Neue";
   font-weight: 200;
@@ -17,6 +30,15 @@ body {
 
 input {
   font-size: 18px;
+  text-align: right;
+  border-radius: 2px;
+  font-family: inherit;
+  font-weight: inherit;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
 }
 
 .row {
@@ -30,9 +52,90 @@ input {
   color: #666;
 }
 
+.equity {
+  color: #ff9922;
+}
+
+.math-cell {
+  @include flex-box();
+
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  text-align: middle;
+}
+
+.round-math-surround {
+  font-size: 30px;
+
+  .times-sign {
+    font-size: 20px;
+    padding: 0 15px 0 17px;
+  }
+
+  .paren {
+    font-size: 120px;
+    font-weight: 100;
+    position: relative;
+    bottom: 10px;
+  }
+
+  * {
+    vertical-align: middle;
+  }
+}
+
+.fraction {
+  display: inline-block;
+  margin-left: 8px;
+  padding-top: 3px;
+
+  .fraction-top {
+    border-bottom: 2px solid black;
+    padding-bottom: 5px;
+  }
+}
+
+.round-amount-input, .round-valuation-input {
+  display: block;
+}
+
+.money-input {
+  @include flex-box();
+  margin: 5px;
+
+  .money-input-field {
+    flex: 1;
+    border-radius: 0 2px 2px 0;
+    margin: 0px;
+    border-left: 0;
+    max-width: 10em;
+  }
+
+  .money-input-dollarsign {
+    border-radius: 2px 0 0 2px;
+    background-color: rgba(147, 128, 108, .1);
+  }
+
+  * {
+    border: 1px solid rgba(147, 128, 108, .25);
+    padding: .3em .5em;
+  }
+}
+
+.exit-divider {
+  background-color: #ddd;
+  text-align: center;
+  line-height: 2.0;
+}
 
 //---- color shifts for each round ----//
-$base-round-amount-color: #268bd2;
+$base-round-amount-color: #3093d9;
 $round-color-rotation: 30;
 .series-A-amount {
   color: $base-round-amount-color;
@@ -53,7 +156,7 @@ $round-color-rotation: 30;
   color: adjust_hue($base-round-amount-color, $round-color-rotation * 5);
 }
 
-$base-round-valuation-color: #33cc33;
+$base-round-valuation-color: #bf2226;
 .series-A-valuation {
   color: $base-round-valuation-color;
 }

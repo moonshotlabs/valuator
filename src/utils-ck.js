@@ -1,0 +1,4 @@
+/* 
+decimal_sep: character used as deciaml separtor, it defaults to '.' when omitted
+thousands_sep: char used as thousands separator, it defaults to ',' when omitted
+*/Number.prototype.toMoney=function(e,t,n){var r=this,i=isNaN(e)?2:Math.abs(e),s=t||".",o=typeof n=="undefined"?",":n,u=r<0?"-":"",a=parseInt(r=Math.abs(r).toFixed(i))+"",f=(f=a.length)>3?f%3:0;return u+(f?a.substr(0,f)+o:"")+a.substr(f).replace(/(\d{3})(?=\d)/g,"$1"+o)+(i?s+Math.abs(r-a).toFixed(i).slice(2):"")};var copyDataObject=function(e){return JSON.parse(JSON.stringify(e))},intify=function(e){return parseInt(e,10)},twoDecimalify=function(e){typeof e!="number"&&(e=parseFloat(e,10));return e.toFixed(2).replace(/\.0{0,2}$/,"")},hasClass=function(e,t){return e.classList.contains(t)},notNull=function(e){return e!==null&&e!==undefined&&e!==""};

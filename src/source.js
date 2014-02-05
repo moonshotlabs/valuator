@@ -1,6 +1,26 @@
 /** @jsx React.DOM */
 
 var RoundsList = React.createClass({
+  getInitialState: function() {
+    // this.generatePostRoundEquity();
+    return {equityPercentList: [2, 2, 2, 2, 2, 2]};
+  },
+
+  generatePostRoundEquity: function() {
+    this.state.equityPercentList = [];
+    
+    var currentEquityPercent = this.props.startingEquityPercent;
+    for (var i = 0; i < this.props.roundsLink.value.length; i++) {
+      var round = this.props.roundsLink.value[i];
+      if (i < this.props.firstDilutingRound) {
+        this.state.equityPercentList.push(currentEquityPercent);
+      } else {
+        currentEquityPercent = currentEquityPercent * (1 - (round.amount / round.valuation));
+        this.state.equityPercentList.push(currentEquityPercent);
+      }
+    }
+  },
+
   onRoundChanged: function(round, index) {
     newRounds = copyDataObject(this.props.roundsLink.value);
     newRounds[index] = round;
@@ -9,39 +29,55 @@ var RoundsList = React.createClass({
 
   updateRound: function(round, i, e) {
     newRound = copyDataObject(round);
-    if (e.target.getAttribute("class") == "round-amount-input") {
+    if (hasClass(e.target, "round-amount-input")) {
       newRound.amount = intify(e.target.value);  
-    } else if (e.target.getAttribute("class") == "round-valuation-input") {
+    } else if (hasClass(e.target, "round-valuation-input")) {
       newRound.valuation = intify(e.target.value);  
     }
     this.onRoundChanged(newRound, i);
   },
 
   render: function() {
-    var that = this;
+    // var that = this;
+    this.generatePostRoundEquity();
     var renderRound = function(round, i) {
       if (i < this.props.firstDilutingRound) {
         return;
       } else {
         return (
           <div key={round.name} className="Grid Grid--center Grid--gutters row">
-            <div className="Grid-cell u-1of4"><h2 className="row-title">{round.name} ROUND</h2></div>
-            <div className="Grid-cell">
-              invested             
-              
-              <input 
-                className={"round-amount-input series-" + round.name + "-amount"}
-                onChange={this.updateRound.bind(this, round, i)}
-                defaultValue={round.amount} />
-              
-              at a valuation of  
+            <div className="Grid-cell u-1of3"><h2 className="row-title">{round.name} ROUND</h2></div>
+            <div className="Grid-cell math-cell">
+              <div className="round-math-surround">
+                <span className="equity">{twoDecimalify(this.state.equityPercentList[i - 1])}%</span>
+                <span className="times-sign">x</span>
+                <span className="paren">(</span>
+                1 - 
+              </div>
+              <div className="fraction">
+                <div className="money-input fraction-top">
+                  <span className="money-input-dollarsign">$</span>
+                  <input 
+                    className={"money-input-field round-amount-input series-" + round.name + "-amount"}
+                    onChange={this.updateRound.bind(this, round, i)}
+                    defaultValue={round.amount} />
+                </div>
+                
+                <div className="money-input fraction-bottom">
+                  <span className="money-input-dollarsign">$</span>
+                  <input 
+                    className={"money-input-field round-valuation-input series-" + round.name + "-valuation"}
+                    onChange={this.updateRound.bind(this, round, i)}
+                    defaultValue={round.valuation} />
+                </div>
+              </div>
+              <div className="round-math-surround">
+                <span className="paren">)</span>
+                =
+                <span className="equity">{twoDecimalify(this.state.equityPercentList[i])}%</span>
+              </div>
 
-              <input 
-                className={"round-valuation-input series-" + round.name + "-valuation"}
-                onChange={this.updateRound.bind(this, round, i)}
-                defaultValue={round.valuation} />
-
-              for {(round.amount / round.valuation).toFixed(2)}
+              
             </div>
           </div>
         )
@@ -56,7 +92,7 @@ var JoiningRow = React.createClass({
   render: function() {
     return (
       <div className="Grid Grid--center Grid--gutters row">
-        <div className="Grid-cell u-1of4"><h2 className="row-title">JOINED</h2></div>
+        <div className="Grid-cell u-1of3"><h2 className="row-title">JOINED</h2></div>
         <div className="Grid-cell">
 
           after the
@@ -68,8 +104,12 @@ var JoiningRow = React.createClass({
           round for
           
           <input 
+            className="equity"
             onChange={function(e) {
-              this.props.startingEquityPercentLink.requestChange(e.target.value);
+              if (!isNaN(e.target.value) && notNull(e.target.value)) {
+                this.props.startingEquityPercentLink.requestChange(parseFloat(e.target.value));
+              }
+              
             }.bind(this)} 
             defaultValue={this.props.startingEquityPercentLink.value} />
         </div>
@@ -105,8 +145,14 @@ var ValueCalculator = React.createClass({
       companyName: 'Dropbox',
       companyId: 'dropbox',
       startingEquityPercent: 2,
+      finalEquityPercent: 2,
       startingRound: 'A',
       rounds: [
+        {
+          name: 'founding',
+          valuation: null,
+          amount: null
+        },
         {
           name: 'A',
           valuation: 20000000,
@@ -123,7 +169,8 @@ var ValueCalculator = React.createClass({
           amount: 250000000
         }
       ],
-      exitValuation: 40000000000
+      exitValuation: 40000000000,
+      liquidationPreference: 1
     };
   },
   updateData: function(changes) {
@@ -142,12 +189,19 @@ var ValueCalculator = React.createClass({
     }
     return firstDilutingRound;
   },
-  calculateTakehome: function() {
+  calculateTakehome: function(includeLiquidation) {
     var firstDilutingRound = this.getFirstDilutingRoundIndex();
-    var postLiquidation = this.state.exitValuation - this.state.rounds.reduce(
-      function(partial, round) {
-        return partial + round.amount;
-      }, 0);
+    var postLiquidation;
+    if (includeLiquidation) {
+      postLiquidation = 
+        this.state.exitValuation - 
+        this.state.liquidationPreference * this.state.rounds.reduce(
+          function(partial, round) {
+            return partial + round.amount;
+          }, 0);
+    } else {
+      postLiquidation = this.state.exitValuation;
+    }
 
     var takehome = this.state.startingEquityPercent / 100 * postLiquidation;
     for (var i = firstDilutingRound; i < this.state.rounds.length; i++) {
@@ -168,20 +222,30 @@ var ValueCalculator = React.createClass({
           startingEquityPercentLink={startingEquityPercentLink}
           rounds={this.state.rounds} />
 
-        <RoundsList roundsLink={roundsLink} firstDilutingRound={this.getFirstDilutingRoundIndex()} />
+        <RoundsList 
+          roundsLink={roundsLink} 
+          firstDilutingRound={this.getFirstDilutingRoundIndex()}
+          startingEquityPercent={this.state.startingEquityPercent} />
+
+        <h2 className="exit-divider">NOW WHAT IF WE...</h2>
 
 
         <div className="Grid Grid--center Grid--gutters row">
-          <div className="Grid-cell u-1of4"><h2 className="row-title">exit</h2></div>
+          <div className="Grid-cell u-1of3"><h2 className="row-title">exit</h2></div>
           <div className="Grid-cell">
             If we sell for 
-            <input 
-              onChange={function(e) {
-                this.updateData({exitValuation: intify(e.target.value)})
-              }.bind(this)}
-              defaultValue={this.state.exitValuation} />
+
+            <div className="money-input fraction-bottom">
+              <span className="money-input-dollarsign">$</span>
+              <input 
+                className={"money-input-field"}
+                onChange={function(e) {
+                  this.updateData({exitValuation: intify(e.target.value)})
+                }.bind(this)}
+                defaultValue={this.state.exitValuation} />
+            </div>
             I will make 
-            <span>${this.calculateTakehome().toLocaleString()}</span>.
+            <span>${this.calculateTakehome(false).toMoney()}</span>.
           </div>
         </div>
       </div>

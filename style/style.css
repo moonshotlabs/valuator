@@ -318,20 +318,31 @@
     .large-Grid--1of3,
     .large-Grid--1of4 {
       display: flex; } } }
+* {
+  box-sizing: border-box; }
+
 h1, h2, h3, h4, h5 {
   margin: 0;
   padding: 0;
   font-weight: 400; }
 
 body {
-  background: #ddd;
+  margin: 0px;
   color: #222;
   font-family: "Helvetica Neue";
   font-weight: 200;
   font-size: 18px; }
 
 input {
-  font-size: 18px; }
+  font-size: 18px;
+  text-align: right;
+  border-radius: 2px;
+  font-family: inherit;
+  font-weight: inherit; }
+
+.container {
+  width: 100%;
+  margin: 0 auto; }
 
 .row {
   line-height: 1.8; }
@@ -342,38 +353,106 @@ input {
   margin-right: 50px;
   color: #666; }
 
+.equity {
+  color: #ff9922; }
+
+.math-cell {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  text-align: middle; }
+
+.round-math-surround {
+  font-size: 30px; }
+  .round-math-surround .times-sign {
+    font-size: 20px;
+    padding: 0 15px 0 17px; }
+  .round-math-surround .paren {
+    font-size: 120px;
+    font-weight: 100;
+    position: relative;
+    bottom: 10px; }
+  .round-math-surround * {
+    vertical-align: middle; }
+
+.fraction {
+  display: inline-block;
+  margin-left: 8px;
+  padding-top: 3px; }
+  .fraction .fraction-top {
+    border-bottom: 2px solid black;
+    padding-bottom: 5px; }
+
+.round-amount-input, .round-valuation-input {
+  display: block; }
+
+.money-input {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 5px; }
+  .money-input .money-input-field {
+    flex: 1;
+    border-radius: 0 2px 2px 0;
+    margin: 0px;
+    border-left: 0;
+    max-width: 10em; }
+  .money-input .money-input-dollarsign {
+    border-radius: 2px 0 0 2px;
+    background-color: rgba(147, 128, 108, 0.1); }
+  .money-input * {
+    border: 1px solid rgba(147, 128, 108, 0.25);
+    padding: .3em .5em; }
+
+.exit-divider {
+  background-color: #ddd;
+  text-align: center;
+  line-height: 2.0; }
+
 .series-A-amount {
-  color: #268bd2; }
+  color: #3093d9; }
 
 .series-B-amount {
-  color: #2635d2; }
+  color: #303ed9; }
 
 .series-C-amount {
-  color: #6d26d2; }
+  color: #7630d9; }
 
 .series-D-amount {
-  color: #c326d2; }
+  color: #cb30d9; }
 
 .series-E-amount {
-  color: #d2268b; }
+  color: #d93093; }
 
 .series-F-amount {
-  color: #d22635; }
+  color: #d9303e; }
 
 .series-A-valuation {
-  color: #33cc33; }
+  color: #bf2226; }
 
 .series-B-valuation {
-  color: #33cc80; }
+  color: #bf6d22; }
 
 .series-C-valuation {
-  color: #33cccc; }
+  color: #bfbb22; }
 
 .series-D-valuation {
-  color: #337fcc; }
+  color: #74bf22; }
 
 .series-E-valuation {
-  color: #3333cc; }
+  color: #26bf22; }
 
 .series-F-valuation {
-  color: #7f33cc; }
+  color: #22bf6d; }
