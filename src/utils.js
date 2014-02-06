@@ -2,8 +2,7 @@
 decimal_sep: character used as deciaml separtor, it defaults to '.' when omitted
 thousands_sep: char used as thousands separator, it defaults to ',' when omitted
 */
-Number.prototype.toMoney = function(decimals, decimal_sep, thousands_sep)
-{ 
+Number.prototype.toMoney = function(decimals, decimal_sep, thousands_sep) { 
    var n = this,
    c = isNaN(decimals) ? 2 : Math.abs(decimals), //if decimal is zero we must take it, it means user does not want to show any decimal
    d = decimal_sep || '.', //if no decimal separator is passed we use the dot as default decimal separator (we MUST use a decimal separator)
@@ -22,41 +21,49 @@ Number.prototype.toMoney = function(decimals, decimal_sep, thousands_sep)
 
    j = ((j = i.length) > 3) ? j % 3 : 0; 
    return sign + (j ? i.substr(0, j) + t : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : ''); 
-}
+};
+
+String.prototype.toProperCase = function () {
+    return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+};
 
 var copyDataObject = function(obj) {
   return JSON.parse(JSON.stringify(obj));
-}
+};
 
 var intify = function(string) {
   return parseInt(string, 10);  
-}
+};
 
 var twoDecimalify = function(num) {
   if (typeof num !== "number") {
     num = parseFloat(num, 10);
   }
   return num.toFixed(2).replace(/\.0{0,2}$/, "");
-}
+};
 
 var hasClass = function(element, className) {
   return (element.classList.contains(className));
-}
+};
 
 var notNull = function(x) {
   return x !== null && x !== undefined && x !== "";
+};
+
+var isNum = function(x) {
+  return notNull(x) && !isNaN(x);
 }
 
-var getFirstDilutingRoundIndex = function(roundName, rounds) {
+var getFirstDilutingRoundIndex = function(roundId, rounds) {
   var firstDilutingRound = 0;
   for (var i = 0; i < rounds.length; i++) {
-    if (roundName == rounds[i].name) {
+    if (roundId == rounds[i].id) {
       firstDilutingRound = i + 1;
       break;
     }
   }
   return firstDilutingRound;
-}
+};
 
 var getCashOutPhrase = function(takehome) {
   var cashOutPhrase = "which is pitiful";
@@ -88,4 +95,4 @@ var getCashOutPhrase = function(takehome) {
     cashOutPhrase = "to fucking swim in";
   } 
   return cashOutPhrase;
-}
+};

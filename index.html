@@ -7,22 +7,21 @@
   </head>
   <body>
     <h1 class="page-header">The Valuator</h1>
-  
+    
+    <div class="typeahead-holder">
+      <input class="typeahead" type="text" placeholder="company" autocomplete="off" spellcheck="false" dir="auto"/>
+    </div>
     <div id="container" class="container">
     
     </div>
     <script src="src/utils.js"></script>
     <script src="lib/jquery-2.1.0.min.js"></script>
+    <script src="lib/typeahead.bundle.js"></script>
     <!-- <script src="lib/jquery.formatter.js"></script> -->
-    <script type="text/jsx" src="src/source.js"></script>
-    <script>
-      // $.ready(
-      //   function() {
-      //     $('.money-input').formatter({
-      //       'pattern': '${{999}},{{999}},{{999}},{{999}},{{999}}.{{99}}'
-      //     });
-      //   }
-      // )
-    </script>
+    <script type="text/jsx" src="src/startingRoundSelector.js"></script>
+    <script type="text/jsx" src="src/joiningRow.js"></script>
+    <script type="text/jsx" src="src/roundsList.js"></script>
+    <script type="text/jsx" src="src/exitCalculators.js"></script>
+    <script type="text/jsx" src="src/main.js"></script>
   </body>
 </html>
