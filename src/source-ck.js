@@ -48,31 +48,31 @@ var RoundsList = React.createClass({
           <div key={round.name} className="Grid Grid--center Grid--gutters row">
             <div className="Grid-cell u-1of3"><h2 className="row-title">{round.name} ROUND</h2></div>
             <div className="Grid-cell math-cell">
-              <div className="round-math-surround">
+              <div className="math">
                 <span className="equity">{twoDecimalify(this.state.equityPercentList[i - 1])}%</span>
                 <span className="times-sign">x</span>
-                <span className="paren">(</span>
+                <span className="big-paren">(</span>
                 1 - 
-              </div>
-              <div className="fraction">
-                <div className="money-input fraction-top">
-                  <span className="money-input-dollarsign">$</span>
-                  <input 
-                    className={"money-input-field round-amount-input series-" + round.name + "-amount"}
-                    onChange={this.updateRound.bind(this, round, i)}
-                    defaultValue={round.amount} />
+                
+                <div className="fraction">
+                  <div className="money-input fraction-top">
+                    <span className="money-input-dollarsign">$</span>
+                    <input 
+                      className={"money-input-field round-amount-input series-" + round.name + "-amount"}
+                      onChange={this.updateRound.bind(this, round, i)}
+                      defaultValue={round.amount} />
+                  </div>
+                  
+                  <div className="money-input fraction-bottom">
+                    <span className="money-input-dollarsign">$</span>
+                    <input 
+                      className={"money-input-field round-valuation-input series-" + round.name + "-valuation"}
+                      onChange={this.updateRound.bind(this, round, i)}
+                      defaultValue={round.valuation} />
+                  </div>
                 </div>
                 
-                <div className="money-input fraction-bottom">
-                  <span className="money-input-dollarsign">$</span>
-                  <input 
-                    className={"money-input-field round-valuation-input series-" + round.name + "-valuation"}
-                    onChange={this.updateRound.bind(this, round, i)}
-                    defaultValue={round.valuation} />
-                </div>
-              </div>
-              <div className="round-math-surround">
-                <span className="paren">)</span>
+                <span className="big-paren">)</span>
                 =
                 <span className="equity">{twoDecimalify(this.state.equityPercentList[i])}%</span>
               </div>
@@ -136,6 +136,103 @@ var StartingRoundSelector = React.createClass({
   }
 });
 
+var SaleCalculator = React.createClass({
+  getInitialState: function() {
+    return {
+      valuation: 40000000000,
+      liquidationPreference: 1
+    };
+  },
+
+  calculateTakehome: function() {
+    var postLiquidation = 
+        this.state.valuation - 
+        this.state.liquidationPreference * this.props.state.rounds.reduce(
+          function(partial, round) {
+            return partial + round.amount;
+          }, 0);
+
+    var takehome = this.props.state.startingEquityPercent / 100 * postLiquidation;
+    for (var i = this.props.firstDilutingRound; i < this.props.state.rounds.length; i++) {
+      var round = this.props.state.rounds[i];
+      takehome = takehome * (1 - round.amount / round.valuation);
+    }
+    return takehome;
+  },
+
+  render: function() {
+    var totalInvestment = this.props.state.rounds.reduce(function(partial, round) {
+        return partial + round.amount;
+      }, 0);
+
+    return (
+      <div className="exit-option-block Grid-cell">
+        <h2 className="exit-header">SELL</h2>
+
+        <span className="math">
+          <div className="money-input">
+            <span className="money-input-dollarsign">$</span>
+            <input 
+              className={"money-input-field"}
+              onChange={function(e) {
+                this.setState({valuation: intify(e.target.value)})
+              }.bind(this)}
+              defaultValue={this.state.valuation} />
+          </div>
+
+          
+          <span className="minus-sign">-</span>
+          ${totalInvestment / 1000000}M 
+          <span className="times-sign">x</span>
+          {this.state.liquidationPreference}x
+        </span>
+
+        <span>${this.calculateTakehome().toMoney()}</span>.
+      </div>
+    );
+  }
+});
+
+var IPOCalculator = React.createClass({
+  getInitialState: function() {
+    return {
+      valuation: 40000000000
+    };
+  },
+
+  calculateTakehome: function() {
+    var postLiquidation = this.state.valuation;
+
+    var takehome = this.props.state.startingEquityPercent / 100 * postLiquidation;
+    for (var i = this.props.firstDilutingRound; i < this.props.state.rounds.length; i++) {
+      var round = this.props.state.rounds[i];
+      takehome = takehome * (1 - round.amount / round.valuation);
+    }
+    return takehome;
+  },
+
+  render: function() {
+    return (
+      <div className="exit-option-block Grid-cell">
+        <h2 className="exit-header">IPO</h2>
+          If we IPO at a valuation of  
+
+          <div className="money-input">
+            <span className="money-input-dollarsign">$</span>
+            <input 
+              className={"money-input-field"}
+              onChange={function(e) {
+                this.setState({valuation: intify(e.target.value)})
+              }.bind(this)}
+              defaultValue={this.state.valuation} />
+          </div>
+          I will make 
+          <span>${this.calculateTakehome().toMoney()}</span>.
+      </div>
+    );
+  }
+});
+
 var ValueCalculator = React.createClass({
   mixins: [React.addons.LinkedStateMixin],
 
@@ -145,7 +242,6 @@ var ValueCalculator = React.createClass({
       companyName: 'Dropbox',
       companyId: 'dropbox',
       startingEquityPercent: 2,
-      finalEquityPercent: 2,
       startingRound: 'A',
       rounds: [
         {
@@ -168,9 +264,7 @@ var ValueCalculator = React.createClass({
           valuation: 10000000000,
           amount: 250000000
         }
-      ],
-      exitValuation: 40000000000,
-      liquidationPreference: 1
+      ]
     };
   },
   updateData: function(changes) {
@@ -188,27 +282,6 @@ var ValueCalculator = React.createClass({
       }
     }
     return firstDilutingRound;
-  },
-  calculateTakehome: function(includeLiquidation) {
-    var firstDilutingRound = this.getFirstDilutingRoundIndex();
-    var postLiquidation;
-    if (includeLiquidation) {
-      postLiquidation = 
-        this.state.exitValuation - 
-        this.state.liquidationPreference * this.state.rounds.reduce(
-          function(partial, round) {
-            return partial + round.amount;
-          }, 0);
-    } else {
-      postLiquidation = this.state.exitValuation;
-    }
-
-    var takehome = this.state.startingEquityPercent / 100 * postLiquidation;
-    for (var i = firstDilutingRound; i < this.state.rounds.length; i++) {
-      var round = this.state.rounds[i];
-      takehome = takehome * (1 - round.amount / round.valuation);
-    }
-    return takehome;
   },
   render: function() {
     var startingRoundLink = this.linkState('startingRound');
@@ -229,25 +302,11 @@ var ValueCalculator = React.createClass({
 
         <h2 className="exit-divider">NOW WHAT IF WE...</h2>
 
-
-        <div className="Grid Grid--center Grid--gutters row">
-          <div className="Grid-cell u-1of3"><h2 className="row-title">exit</h2></div>
-          <div className="Grid-cell">
-            If we sell for 
-
-            <div className="money-input fraction-bottom">
-              <span className="money-input-dollarsign">$</span>
-              <input 
-                className={"money-input-field"}
-                onChange={function(e) {
-                  this.updateData({exitValuation: intify(e.target.value)})
-                }.bind(this)}
-                defaultValue={this.state.exitValuation} />
-            </div>
-            I will make 
-            <span>${this.calculateTakehome(false).toMoney()}</span>.
-          </div>
+        <div className="Grid Grid--center">
+          <SaleCalculator state={this.state} firstDilutingRound={this.getFirstDilutingRoundIndex()} />
+          <IPOCalculator state={this.state} firstDilutingRound={this.getFirstDilutingRoundIndex()} />
         </div>
+        
       </div>
     );
   }

@@ -1,0 +1,240 @@
+@font-face {
+ font-family: "Georgia Pro";
+ src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/3bf94bd0-b751-414d-bd01-27858c0917e1") format("woff");
+ font-style: normal;
+ font-weight: normal;
+}
+// @font-face {
+//  font-family: "Georgia Pro";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/e8044c52-86a5-475c-8fb9-e56641ec5b11") format("woff");
+//  font-style: italic;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Georgia Pro Black";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/b35c8310-ce63-4974-b2ef-4332d0d69206") format("woff");
+//  font-style: normal;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Georgia Pro Black";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/c5b59269-5be6-4ed1-b77a-c7de347c77d0") format("woff");
+//  font-style: italic;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Georgia Pro Bold";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/661a9a7f-bf86-497d-a1c8-e9ff60f97416") format("woff");
+//  font-style: normal;
+//  font-weight: bold;
+// }
+// @font-face {
+//  font-family: "Georgia Pro Bold";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/bce172ee-b06b-42a9-8201-ec0b20b9e879") format("woff");
+//  font-style: italic;
+//  font-weight: bold;
+// }
+// @font-face {
+//  font-family: "Georgia Pro Cond";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/38adec26-8cae-4f70-bd45-c57426e48482") format("woff");
+//  font-style: normal;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Georgia Pro Cond";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/d22517cb-6c8a-4786-a245-1d94bad21285") format("woff");
+//  font-style: italic;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Georgia Pro Cond Black";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/39f56d13-052f-4c3b-907f-a0fba6bed5ce") format("woff");
+//  font-style: normal;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Georgia Pro Cond Black";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/ffd7f211-b971-4124-9019-227059bcc209") format("woff");
+//  font-style: italic;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Georgia Pro Cond Bold";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/a2f61e11-a9ab-48b4-84b4-eda55b2ceac1") format("woff");
+//  font-style: normal;
+//  font-weight: bold;
+// }
+// @font-face {
+//  font-family: "Georgia Pro Cond Bold";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/297eed2a-ef45-48f4-9502-9104be10bd2f") format("woff");
+//  font-style: italic;
+//  font-weight: bold;
+// }
+// @font-face {
+//  font-family: "Georgia Pro Cond Light";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/4eac0365-30ab-491e-bf3c-9a2797be6e0b") format("woff");
+//  font-style: normal;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Georgia Pro Cond Light";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/c40a77c3-8787-4017-97b9-cfd5df82aa28") format("woff");
+//  font-style: italic;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Georgia Pro Cond SemiBold";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/f07b9562-49bf-4b92-966b-270d8fffe173") format("woff");
+//  font-style: normal;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Georgia Pro Cond SemiBold";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/a3e95135-b94b-4e24-96f9-ff9e5f83c129") format("woff");
+//  font-style: italic;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Georgia Pro Light";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/6fea8d96-8b13-451e-9fff-12c56705d170") format("woff");
+//  font-style: normal;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Georgia Pro Light";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/04c6125a-88f1-4c18-b522-a1d0303af279") format("woff");
+//  font-style: italic;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Georgia Pro SemiBold";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/3001178c-b52d-460f-9016-d11090d81156") format("woff");
+//  font-style: normal;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Georgia Pro SemiBold";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/82c155ef-0f84-4f43-82dd-295cc1ca3347") format("woff");
+//  font-style: italic;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Verdana Pro";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/a7c88283-79b0-4431-9475-d9081352485f") format("woff");
+//  font-style: normal;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Verdana Pro";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/8d2a5a73-fb9c-45d9-bd0f-0b24cfb1f1dc") format("woff");
+//  font-style: italic;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Verdana Pro Black";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/cbd0b077-b1d9-4ca3-bfeb-08c823c493be") format("woff");
+//  font-style: normal;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Verdana Pro Black";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/c1f3be1e-4ddf-4f7d-aa6a-cc320ef91898") format("woff");
+//  font-style: italic;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Verdana Pro Bold";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/63511f11-0fa2-4619-a7fe-c37eb65d99c8") format("woff");
+//  font-style: normal;
+//  font-weight: bold;
+// }
+// @font-face {
+//  font-family: "Verdana Pro Bold";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/a9991d65-7ca4-4171-b65b-2695a27e0f9a") format("woff");
+//  font-style: italic;
+//  font-weight: bold;
+// }
+// @font-face {
+//  font-family: "Verdana Pro Cond";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/c681ba5d-46ff-4030-acb4-e145dcd3f618") format("woff");
+//  font-style: normal;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Verdana Pro Cond";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/c02f790a-0689-4fc7-9a99-e0a49d516697") format("woff");
+//  font-style: italic;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Verdana Pro Cond Black";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/9a2eea76-63fa-4ebc-aa4e-98467e010a41") format("woff");
+//  font-style: normal;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Verdana Pro Cond Black";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/c8b14558-6bd1-41b6-a42a-5691d1fbbc8a") format("woff");
+//  font-style: italic;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Verdana Pro Cond Bold";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/d12d9040-68f7-407c-ab76-58b96ef7eedd") format("woff");
+//  font-style: normal;
+//  font-weight: bold;
+// }
+// @font-face {
+//  font-family: "Verdana Pro Cond Bold";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/00b74d13-b7f9-48de-9ed7-45829cf4cbe0") format("woff");
+//  font-style: italic;
+//  font-weight: bold;
+// }
+// @font-face {
+//  font-family: "Verdana Pro Cond Light";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/a5d5ec09-b67f-42f4-9951-f291a0acab5f") format("woff");
+//  font-style: normal;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Verdana Pro Cond Light";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/b590610d-189c-47b8-bc53-7ba3b14afb5d") format("woff");
+//  font-style: italic;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Verdana Pro Cond SemiBold";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/1c3d1531-0c58-4e8e-9c50-f87ed7da07d6") format("woff");
+//  font-style: normal;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Verdana Pro Cond SemiBold";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/9296e1be-011a-450f-8dec-1e27dddcc53a") format("woff");
+//  font-style: italic;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Verdana Pro Light";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/cc1e4c9b-025e-4ce4-a186-9f73c55cfc72") format("woff");
+//  font-style: normal;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Verdana Pro Light";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/d40a80c0-c403-45fc-bf3f-ae99907072ef") format("woff");
+//  font-style: italic;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Verdana Pro SemiBold";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/fbedf321-559d-4d43-ad2e-ee6b3659822b") format("woff");
+//  font-style: normal;
+//  font-weight: normal;
+// }
+// @font-face {
+//  font-family: "Verdana Pro SemiBold";
+//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/8bd42b5d-23f0-4aed-8ef8-c895a3951c95") format("woff");
+//  font-style: italic;
+//  font-weight: normal;
+// }

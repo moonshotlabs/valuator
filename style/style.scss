@@ -1,4 +1,5 @@
 @import 'grid';
+@import 'fonts';
 @import 'normalize.css';
 
 @mixin flex-box() {
@@ -7,6 +8,117 @@
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+@mixin inline-flex() {
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+}
+
+@mixin math($base-size) {
+  .math {
+    font-size: $base-size;
+
+    .times-sign {
+      font-size: (2 * $base-size / 3);
+      padding: 0 ($base-size / 2) 0 ($base-size / 2 + 2px);
+      position: relative;
+      top: 2px;
+    }
+    
+    .minus-sign {
+      margin: 10px;
+    }
+
+    .equals {
+      margin: 10px;
+    }
+
+    .big-paren {
+      font-size: ($base-size * 4);
+      font-weight: 100;
+      position: relative;
+      bottom: ($base-size / 3);
+      padding: 5px;
+    }
+
+    .fraction {
+      $money-input-size: ($base-size / 2);
+
+      display: inline-block;
+      margin-left: 8px;
+      padding-top: 3px;
+      margin-right: 10px;
+
+      .money-input {
+        font-size: $money-input-size;
+
+        input {
+          font-size: $money-input-size;
+        }
+      }
+      
+      .fraction-top {
+        border-bottom: 2px solid black;
+        padding-bottom: 5px;
+      }
+    }
+
+    .fraction-top, .fraction-bottom {
+      display: block !important;
+    }
+
+    $money-input-size: (2 * $base-size / 3);
+    .money-input {
+      font-size: $money-input-size;
+
+      input {
+        font-size: $money-input-size;
+      }
+    }
+
+    .input-postfix-block {
+      font-size: $money-input-size;
+
+      input {
+        font-size: $money-input-size;
+      }
+    }
+    
+    .info-text {
+      font-size: ($base-size / 2);
+    }
+
+    * {
+      vertical-align: middle;
+    }
+  }
+}
+
+.input-postfix-block {
+  @include inline-flex();
+  margin: 5px;
+
+  .input-postfix-field {
+    flex: 1;
+    border-radius: 2px 0 0 2px;
+    margin: 0px;
+    border-right: 0;
+    display: inline-block;
+  }
+
+  .input-postfix-suffix {
+    border-radius: 0 2px 2px 0;
+    background-color: rgba(147, 128, 108, .1);
+  }
+
+  * {
+    border: 1px solid rgba(147, 128, 108, .25);
+    padding: .1em .3em;
+  }
 }
 
 * {
@@ -36,6 +148,20 @@ input {
   font-weight: inherit;
 }
 
+select {
+  font-size: inherit;
+}
+
+.page-header {
+  background-color: rgba(147, 128, 108, 0.1);
+  text-align: center;
+  line-height: 2.5;
+  margin-bottom: 40px;
+  font-size: 50px;
+  font-family: Georgia;
+  font-variant: small-caps;
+}
+
 .container {
   width: 100%;
   margin: 0 auto;
@@ -53,11 +179,16 @@ input {
 }
 
 .equity {
-  color: #ff9922;
+  color: #3093d9;
+}
+
+.investment {
+  color: #ff9922; 
 }
 
 .math-cell {
   @include flex-box();
+  @include math(30px);
 
   -webkit-box-align: center;
   -webkit-align-items: center;
@@ -70,43 +201,12 @@ input {
   text-align: middle;
 }
 
-.round-math-surround {
-  font-size: 30px;
-
-  .times-sign {
-    font-size: 20px;
-    padding: 0 15px 0 17px;
-  }
-
-  .paren {
-    font-size: 120px;
-    font-weight: 100;
-    position: relative;
-    bottom: 10px;
-  }
-
-  * {
-    vertical-align: middle;
-  }
-}
-
-.fraction {
-  display: inline-block;
-  margin-left: 8px;
-  padding-top: 3px;
-
-  .fraction-top {
-    border-bottom: 2px solid black;
-    padding-bottom: 5px;
-  }
-}
-
 .round-amount-input, .round-valuation-input {
   display: block;
 }
 
 .money-input {
-  @include flex-box();
+  @include inline-flex();
   margin: 5px;
 
   .money-input-field {
@@ -114,7 +214,7 @@ input {
     border-radius: 0 2px 2px 0;
     margin: 0px;
     border-left: 0;
-    max-width: 10em;
+    max-width: 9em;
   }
 
   .money-input-dollarsign {
@@ -128,12 +228,59 @@ input {
   }
 }
 
-.exit-divider {
-  background-color: #ddd;
-  text-align: center;
-  line-height: 2.0;
+.percent-input-field {
+  max-width: 4em;
 }
 
+.info-block {
+  display: inline-block !important;
+  line-height: 1.2;
+  
+  .info-text {
+    text-align: center;
+  }
+}
+
+.info-text {
+  font-size: 16px;
+  text-align: center;
+}
+
+.exit-divider {
+  background-color: rgba(147, 128, 108, 0.1);
+  text-align: center;
+  line-height: 3.5;
+  font-family: Georgia;
+  font-variant: small-caps;
+  font-size: 35px;
+}
+
+.exit-option-block {
+  padding-top: 40px;
+  text-align: center !important;
+  position: relative;
+  align-items: flex-start;
+  justify-content: center;
+
+  .exit-header {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 45px;
+  }
+  
+  .math-row {
+    height: 70px;
+  }
+
+  .money-input {
+    display: inline-block;
+    // line-height: 1.2;
+  }
+
+  @include math(25px);
+}
+
+/*
 //---- color shifts for each round ----//
 $base-round-amount-color: #3093d9;
 $round-color-rotation: 30;
@@ -175,7 +322,7 @@ $base-round-valuation-color: #bf2226;
 .series-F-valuation {
   color: adjust_hue($base-round-valuation-color, $round-color-rotation * 5);
 }
-
+*/
 
 
 

@@ -46,3 +46,46 @@ var hasClass = function(element, className) {
 var notNull = function(x) {
   return x !== null && x !== undefined && x !== "";
 }
+
+var getFirstDilutingRoundIndex = function(roundName, rounds) {
+  var firstDilutingRound = 0;
+  for (var i = 0; i < rounds.length; i++) {
+    if (roundName == rounds[i].name) {
+      firstDilutingRound = i + 1;
+      break;
+    }
+  }
+  return firstDilutingRound;
+}
+
+var getCashOutPhrase = function(takehome) {
+  var cashOutPhrase = "which is pitiful";
+  if (takehome > 3) {
+    cashOutPhrase = "to buy a coffee";
+  }
+  if (takehome > 10) {
+    cashOutPhrase = "to buy dinner";
+  }
+  if (takehome > 200) {
+    cashOutPhrase = "to buy a vacation";
+  }
+  if (takehome > 10000) {
+    cashOutPhrase = "to buy a car";
+  }
+  if (takehome > 150000) {
+    cashOutPhrase = "to buy a boat";
+  } 
+  if (takehome > 500000) {
+    cashOutPhrase = "to buy a house";
+  }
+  if (takehome > 5000000) {
+    cashOutPhrase = "to buy a plane";
+  }
+  if (takehome > 50000000) {
+    cashOutPhrase = "to buy an island";
+  }
+  if (takehome > 500000000) {
+    cashOutPhrase = "to fucking swim in";
+  } 
+  return cashOutPhrase;
+}
