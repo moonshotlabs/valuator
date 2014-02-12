@@ -41,7 +41,7 @@ var SaleCalculator = React.createClass({
 
     return (
       <div className="exit-option-block Grid-cell">
-        <h2 className="exit-header">SELL</h2>
+        <h2 className="exit-header">GET ACQUIRED</h2>
 
         <div className="math">
           <div className="math-row">

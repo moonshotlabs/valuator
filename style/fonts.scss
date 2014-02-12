@@ -94,12 +94,12 @@
 //  font-style: italic;
 //  font-weight: normal;
 // }
-// @font-face {
-//  font-family: "Georgia Pro Light";
-//  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/6fea8d96-8b13-451e-9fff-12c56705d170") format("woff");
-//  font-style: normal;
-//  font-weight: normal;
-// }
+@font-face {
+ font-family: "Georgia Pro";
+ src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/6fea8d96-8b13-451e-9fff-12c56705d170") format("woff");
+ font-style: normal;
+ font-weight: 200;
+}
 // @font-face {
 //  font-family: "Georgia Pro Light";
 //  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/04c6125a-88f1-4c18-b522-a1d0303af279") format("woff");

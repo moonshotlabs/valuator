@@ -14,7 +14,7 @@ var JoiningRow = React.createClass({
             startingRoundLink={this.props.startingRoundLink}
             rounds={this.props.rounds} />
           
-          for
+          and got
           
           <span className="input-postfix-block">
             <input 

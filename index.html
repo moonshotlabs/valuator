@@ -6,14 +6,44 @@
     <link rel="stylesheet" type="text/css" href="style/style.css">
   </head>
   <body>
-    <h1 class="page-header">The Valuator</h1>
-    
-    <div class="typeahead-holder">
-      <input class="typeahead" type="text" placeholder="company" autocomplete="off" spellcheck="false" dir="auto"/>
+  
+    <div class="page-header highlight-background">
+      <h1 class="smallcaps">The Valuator</h1>
+
+      <div class="intro">
+        <h2>I work for...</h2>
+        <span class="typeahead-holder">
+          <input 
+            class="typeahead" 
+            type="text" 
+            placeholder="company"
+            value="Dropbox"
+            autocomplete="off" 
+            spellcheck="false" 
+            dir="auto"
+            onClick="this.select();" />
+        </span>
+      </div>
     </div>
-    <div id="container" class="container">
-    
+      
+    <div id="react-container" class="container"></div>
+
+    <div id="notes-container" class="container highlight-background serif">
+      <h2 class="notes-header smallcaps">Notes</h2>
+      <div class="notes-item">
+        <div>Valuations for each funding round are not available from Crunchbase.</div>
+        <div>Those shown here are guesses, assuming investors take 20% per round.</div>
+      </div>
+      <div class="notes-item">
+        <div>This is a toy. Do not take financial advice from it. All my calculations may be thoroughly incorrect.</div>
+      </div>
+      <div class="notes-item">
+        <div>Thanks go out to TechCrunch and the Crunchbase team for providing their invaluable data.</div>
+      </div>
     </div>
+
+
+
     <script src="src/utils.js"></script>
     <script src="lib/jquery-2.1.0.min.js"></script>
     <script src="lib/typeahead.bundle.js"></script>

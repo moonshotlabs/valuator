@@ -3,5 +3,10 @@
   src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/3bf94bd0-b751-414d-bd01-27858c0917e1") format("woff");
   font-style: normal;
   font-weight: normal; }
+@font-face {
+  font-family: "Georgia Pro";
+  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/6fea8d96-8b13-451e-9fff-12c56705d170") format("woff");
+  font-style: normal;
+  font-weight: 200; }
 
 /*# sourceMappingURL=fonts.css.map */

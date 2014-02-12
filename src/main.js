@@ -15,7 +15,7 @@ var ValueCalculator = React.createClass({
 
   getInitialState: function() {
     app = this;
-    return {"companyName":"Dropbox","companyId":"dropbox","startingEquityPercent":1,"startingRound":1391729687681,"rounds":[{"name":"founding","id":1391729687681,"valuation":null,"amount":null,"fundedYear":2007,"fundedMonth":6,"fundedDay":1},{"name":"seed","id":372,"fundedYear":2007,"fundedMonth":6,"fundedDay":1,"amount":500000,"valuation":2500000},{"name":"seed","id":3366,"fundedYear":2008,"fundedMonth":9,"fundedDay":4,"amount":1200000,"valuation":6000000},{"name":"a","id":9737,"fundedYear":2009,"fundedMonth":11,"fundedDay":24,"amount":6000000,"valuation":30000000},{"name":"b","id":25090,"fundedYear":2011,"fundedMonth":10,"fundedDay":18,"amount":250000000,"valuation":1250000000},{"name":"c","id":61611,"fundedYear":2014,"fundedMonth":1,"fundedDay":17,"amount":250000000,"valuation":1250000000}]};
+    return {"companyName":"Dropbox","companyId":"dropbox","startingEquityPercent":1,"startingRound":9737,"rounds":[{"name":"founding","id":1391729687681,"valuation":null,"amount":null,"fundedYear":2007,"fundedMonth":6,"fundedDay":1},{"name":"seed","id":372,"fundedYear":2007,"fundedMonth":6,"fundedDay":1,"amount":500000,"valuation":2500000},{"name":"seed","id":3366,"fundedYear":2008,"fundedMonth":9,"fundedDay":4,"amount":1200000,"valuation":6000000},{"name":"a","id":9737,"fundedYear":2009,"fundedMonth":11,"fundedDay":24,"amount":6000000,"valuation":30000000},{"name":"b","id":25090,"fundedYear":2011,"fundedMonth":10,"fundedDay":18,"amount":250000000,"valuation":1250000000},{"name":"c","id":61611,"fundedYear":2014,"fundedMonth":1,"fundedDay":17,"amount":250000000,"valuation":1250000000}]};
     // {
     //   companyName: 'Dropbox',
     //   companyId: 'dropbox',
@@ -76,8 +76,6 @@ var ValueCalculator = React.createClass({
           fundedDay: isNum(data.founded_day) ? data.founded_day : 0,
         }];
 
-        newState.startingRound = newRounds[0].id;
-
         for (var i = 0; i < data.funding_rounds.length; i++) {
           round = data.funding_rounds[i];
           var newRound = {};
@@ -104,6 +102,8 @@ var ValueCalculator = React.createClass({
             return a.fundedDay - b.fundedDay;
           }
         });
+
+        newState.startingRound = newRounds[Math.max(newRounds.length - 2, 0)].id;
 
         newState.rounds = newRounds;
         console.log(JSON.stringify(newState));
@@ -140,7 +140,7 @@ var ValueCalculator = React.createClass({
           startingRoundLink={startingRoundLink}
           startingEquityPercent={this.state.startingEquityPercent} />
 
-        <h2 className="exit-divider">Now what if we...</h2>
+        <h2 className="exit-divider smallcaps highlight-background">Now what if we...</h2>
 
         <div className="Grid">
           <SaleCalculator 
@@ -159,7 +159,7 @@ var ValueCalculator = React.createClass({
 });
 
 
-React.renderComponent(<ValueCalculator />, document.getElementById("container"));
+React.renderComponent(<ValueCalculator />, document.getElementById("react-container"));
 
 var companies = new Bloodhound({
   datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.name); },
@@ -188,9 +188,9 @@ $('.typeahead').typeahead(null, {
   source: companies.ttAdapter()
 }).on("typeahead:selected", function(e, suggestion, dataset) {
   app.fetchCompany(suggestion.permalink);
+}).on("typeahead:autocompleted", function(e, suggestion, dataset) {
+  app.fetchCompany(suggestion.permalink);
 });
-
-
 
 
 

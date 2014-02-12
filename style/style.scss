@@ -98,6 +98,10 @@
   }
 }
 
+@mixin serif() {
+  font-family: "Georgia Pro", serif;
+}
+
 .input-postfix-block {
   @include inline-flex();
   margin: 5px;
@@ -152,25 +156,55 @@ select {
   font-size: inherit;
 }
 
-.page-header {
-  background-color: rgba(147, 128, 108, 0.1);
-  text-align: center;
-  line-height: 2.5;
-  margin-bottom: 40px;
-  font-size: 50px;
-  font-family: Georgia;
+.smallcaps {
+  @include serif();
   font-variant: small-caps;
+}
+
+.serif {
+  @include serif();
+}
+
+.highlight-background {
+  background-color: rgba(147, 128, 108, 0.1);
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  
+  h1 {
+    line-height: 2.5;
+    font-size: 50px;
+  }
+}
+
+.intro {
+  text-align:center;
+  margin-top: 20px;
+  
+  h2 {
+    vertical-align: bottom;
+    display: inline-block;
+    text-align: center;
+    margin-right: 20px;
+    font-weight: inherit;
+    position: relative;
+    top: 3px;
+    line-height: 50px;
+  }
+  
 }
 
 .container {
   width: 100%;
   margin: 0 auto;
-  padding-bottom: 100px;
 }
 
 .typeahead-holder {
-  text-align: center;
-  margin-bottom: 30px;  
+  display: inline-block;
+  text-align: center;  
 }
 
 input.typeahead {
@@ -268,11 +302,8 @@ input.typeahead {
 }
 
 .exit-divider {
-  background-color: rgba(147, 128, 108, 0.1);
   text-align: center;
   line-height: 3.5;
-  font-family: Georgia;
-  font-variant: small-caps;
   font-size: 35px;
 }
 
@@ -282,6 +313,7 @@ input.typeahead {
   position: relative;
   align-items: flex-start;
   justify-content: center;
+  margin-bottom: 40px;
 
   .exit-header {
     text-align: center;
@@ -300,6 +332,40 @@ input.typeahead {
 
   @include math(25px);
 }
+
+#notes-container {
+  padding: 50px;
+
+  .notes-header {
+    width: 100%;
+    text-align: center;
+    font-size: 45px;
+  }
+
+  .notes-item {
+    max-width: 600px;
+    margin: auto;
+    padding: 15px 0px;
+    font-weight: 200;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ---- Typeahead styling ----//
 
 .typeahead, .tt-query, .tt-hint {
   width: 400px;

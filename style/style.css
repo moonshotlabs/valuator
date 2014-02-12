@@ -323,6 +323,11 @@
   src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/3bf94bd0-b751-414d-bd01-27858c0917e1") format("woff");
   font-style: normal;
   font-weight: normal; }
+@font-face {
+  font-family: "Georgia Pro";
+  src: url("http://wac.6a25.edgecastcdn.net/006A25/webtype/ff/3/6fea8d96-8b13-451e-9fff-12c56705d170") format("woff");
+  font-style: normal;
+  font-weight: 200; }
 .input-postfix-block {
   display: -webkit-inline-box;
   display: -moz-inline-box;
@@ -368,23 +373,44 @@ input {
 select {
   font-size: inherit; }
 
-.page-header {
-  background-color: rgba(147, 128, 108, 0.1);
-  text-align: center;
-  line-height: 2.5;
-  margin-bottom: 40px;
-  font-size: 50px;
-  font-family: Georgia;
+.smallcaps {
+  font-family: "Georgia Pro", serif;
   font-variant: small-caps; }
+
+.serif {
+  font-family: "Georgia Pro", serif; }
+
+.highlight-background {
+  background-color: rgba(147, 128, 108, 0.1); }
+
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 30px; }
+  .page-header h1 {
+    line-height: 2.5;
+    font-size: 50px; }
+
+.intro {
+  text-align: center;
+  margin-top: 20px; }
+  .intro h2 {
+    vertical-align: bottom;
+    display: inline-block;
+    text-align: center;
+    margin-right: 20px;
+    font-weight: inherit;
+    position: relative;
+    top: 3px;
+    line-height: 50px; }
 
 .container {
   width: 100%;
-  margin: 0 auto;
-  padding-bottom: 100px; }
+  margin: 0 auto; }
 
 .typeahead-holder {
-  text-align: center;
-  margin-bottom: 30px; }
+  display: inline-block;
+  text-align: center; }
 
 input.typeahead {
   text-align: left; }
@@ -507,11 +533,8 @@ input.typeahead {
   text-align: center; }
 
 .exit-divider {
-  background-color: rgba(147, 128, 108, 0.1);
   text-align: center;
   line-height: 3.5;
-  font-family: Georgia;
-  font-variant: small-caps;
   font-size: 35px; }
 
 .exit-option-block {
@@ -519,7 +542,8 @@ input.typeahead {
   text-align: center !important;
   position: relative;
   align-items: flex-start;
-  justify-content: center; }
+  justify-content: center;
+  margin-bottom: 40px; }
   .exit-option-block .exit-header {
     text-align: center;
     margin-bottom: 20px;
@@ -571,6 +595,18 @@ input.typeahead {
       font-size: 12.5px; }
     .exit-option-block .math * {
       vertical-align: middle; }
+
+#notes-container {
+  padding: 50px; }
+  #notes-container .notes-header {
+    width: 100%;
+    text-align: center;
+    font-size: 45px; }
+  #notes-container .notes-item {
+    max-width: 600px;
+    margin: auto;
+    padding: 15px 0px;
+    font-weight: 200; }
 
 .typeahead, .tt-query, .tt-hint {
   width: 400px;
