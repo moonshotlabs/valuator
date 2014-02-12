@@ -46,7 +46,14 @@ var RoundsList = React.createClass({
         return;
       } else {
         return (
-          <div key={this.props.companyId + round.name + i} className="Grid Grid--center Grid--gutters row">
+          <div 
+            key={this.props.companyId + round.name + i} 
+            className="card row funding-row Grid Grid--center Grid--gutters"
+            onClick={function(e) {
+              if (!$(e.target).is("input")) {
+                $(e.target).closest(".funding-container").toggleClass("expand");
+              }
+            }}>
             <div className="Grid-cell u-1of3"><h2 className="row-title">{round.name} ROUND</h2></div>
             <div className="Grid-cell math-cell">
               <div className="math">

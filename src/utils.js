@@ -96,3 +96,14 @@ var getCashOutPhrase = function(takehome) {
   } 
   return cashOutPhrase;
 };
+
+var getCrunchbaseListing = function(companyName) {
+  var searchUrl = 
+  "http://api.crunchbase.com/v/1/search.js?api_key=zmsprfmrueqhn9dqt7ds2z87&query=" 
+  + companyName
+  + "&callback=?";
+  $.getJSON(searchUrl, function(data) {
+    console.log(data);
+  });
+};
+

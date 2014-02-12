@@ -2,6 +2,9 @@
 @import 'fonts';
 @import 'normalize.css';
 
+$background-accent-color: lighten(rgb(147, 128, 108), 45);
+$shadow-color: rgba(30, 30, 30, 0.3);
+
 @mixin flex-box() {
   display: -webkit-box;
   display: -webkit-flex;
@@ -116,7 +119,7 @@
 
   .input-postfix-suffix {
     border-radius: 0 2px 2px 0;
-    background-color: rgba(147, 128, 108, .1);
+    background-color: $background-accent-color;
   }
 
   * {
@@ -212,7 +215,7 @@ input.typeahead {
 }
 
 .row {
-  line-height: 1.8;
+/*   line-height: 1.8; */
   
   .pre-round-equity {
     min-width: 86px;
@@ -267,7 +270,7 @@ input.typeahead {
 
   .money-input-dollarsign {
     border-radius: 2px 0 0 2px;
-    background-color: rgba(147, 128, 108, .1);
+    background-color: $background-accent-color;
   }
 
   * {
@@ -302,6 +305,7 @@ input.typeahead {
 }
 
 .exit-divider {
+  margin-top: 40px;
   text-align: center;
   line-height: 3.5;
   font-size: 35px;
@@ -350,7 +354,72 @@ input.typeahead {
   }
 }
 
+.card {
+  background-color: $background-accent-color;
+  width: 90%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  border-radius: 3px;
+  padding: 20px;
+  box-shadow: 0 2px 5px $shadow-color;
+  
+}
 
+
+$funding-summary-height: 73px; // do not change directly
+$funding-row-height: 200px;
+
+.funding-container {
+  position: relative;
+  overflow: hidden;
+  min-height: 200px;
+  width: 100%;
+  cursor: pointer;
+  margin-top: 40px;
+}
+
+.funding-container.expand {
+  .funding-summary {
+    position: relative;
+  }
+  
+  .funding-row {
+    top: 0;
+    margin: 10px auto 10px auto;
+    position: relative;
+  }
+}
+
+.funding-summary {
+  z-index: 100;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  box-shadow: 0 2px 5px $shadow-color;
+}
+
+
+.funding-row {
+  height: $funding-row-height;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  box-shadow: 0px 3px 2px -2px $shadow-color;
+
+  @for $child from 0 to 10 {
+    &:nth-child( #{$child} ) {
+      z-index: (10 - $child);
+      top: ($child * 15px - $funding-row-height + $funding-summary-height);
+    }
+  }
+}
 
 
 

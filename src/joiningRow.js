@@ -3,7 +3,7 @@
 var JoiningRow = React.createClass({
   render: function() {
     return (
-      <div className="Grid Grid--center Grid--gutters row">
+      <div className="card Grid Grid--center Grid--gutters row">
         <div className="Grid-cell u-1of3"><h2 className="row-title">JOINED</h2></div>
         <div className="Grid-cell">
 
