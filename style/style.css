@@ -337,6 +337,7 @@
   margin: 5px; }
   .input-postfix-block .input-postfix-field {
     flex: 1;
+    max-width: 3em;
     border-radius: 2px 0 0 2px;
     margin: 0px;
     border-right: 0;
@@ -358,6 +359,7 @@ h1, h2, h3, h4, h5 {
 
 body {
   margin: 0px;
+  background: #f4f2f0;
   color: #222;
   font-family: "Helvetica Neue";
   font-weight: 200;
@@ -379,9 +381,6 @@ select {
 
 .serif {
   font-family: "Georgia Pro", serif; }
-
-.highlight-background {
-  background-color: rgba(147, 128, 108, 0.1); }
 
 .page-header {
   text-align: center;
@@ -470,9 +469,9 @@ input.typeahead {
       padding-top: 3px;
       margin-right: 10px; }
       .math-cell .math .fraction .money-input {
-        font-size: 15px; }
+        font-size: 18px; }
         .math-cell .math .fraction .money-input input {
-          font-size: 15px; }
+          font-size: 18px; }
       .math-cell .math .fraction .fraction-top {
         border-bottom: 2px solid black;
         padding-bottom: 5px; }
@@ -490,6 +489,50 @@ input.typeahead {
       font-size: 15px; }
     .math-cell .math * {
       vertical-align: middle; }
+  @media (max-width: 1040px) {
+    .math-cell .math {
+      font-size: 22.5px; }
+      .math-cell .math .times-sign {
+        font-size: 15px;
+        padding: 0 11.25px 0 13.25px;
+        position: relative;
+        top: 2px; }
+      .math-cell .math .minus-sign {
+        margin: 10px; }
+      .math-cell .math .equals {
+        margin: 10px; }
+      .math-cell .math .big-paren {
+        font-size: 90px;
+        font-weight: 100;
+        position: relative;
+        bottom: 7.5px;
+        padding: 5px; }
+      .math-cell .math .fraction {
+        display: inline-block;
+        margin-left: 8px;
+        padding-top: 3px;
+        margin-right: 10px; }
+        .math-cell .math .fraction .money-input {
+          font-size: 13.5px; }
+          .math-cell .math .fraction .money-input input {
+            font-size: 13.5px; }
+        .math-cell .math .fraction .fraction-top {
+          border-bottom: 2px solid black;
+          padding-bottom: 5px; }
+      .math-cell .math .fraction-top, .math-cell .math .fraction-bottom {
+        display: block !important; }
+      .math-cell .math .money-input {
+        font-size: 15px; }
+        .math-cell .math .money-input input {
+          font-size: 15px; }
+      .math-cell .math .input-postfix-block {
+        font-size: 15px; }
+        .math-cell .math .input-postfix-block input {
+          font-size: 15px; }
+      .math-cell .math .info-text {
+        font-size: 11.25px; }
+      .math-cell .math * {
+        vertical-align: middle; } }
 
 .round-amount-input, .round-valuation-input {
   display: block; }
@@ -506,7 +549,7 @@ input.typeahead {
     border-radius: 0 2px 2px 0;
     margin: 0px;
     border-left: 0;
-    max-width: 9em; }
+    max-width: 5em; }
   .money-input .money-input-dollarsign {
     border-radius: 2px 0 0 2px;
     background-color: #f4f2f0; }
@@ -533,24 +576,33 @@ input.typeahead {
   text-align: center; }
 
 .exit-divider {
-  margin-top: 40px;
+  margin-top: 20px;
   text-align: center;
-  line-height: 3.5;
+  line-height: 1.5;
   font-size: 35px; }
 
 .exit-option-block {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between !important;
+  align-items: center !important;
   padding-top: 40px;
   text-align: center !important;
   position: relative;
   align-items: flex-start;
   justify-content: center;
-  margin-bottom: 40px; }
+  margin-bottom: 40px;
+  margin-left: 20px !important;
+  margin-right: 20px !important;
+  min-width: 430px; }
   .exit-option-block .exit-header {
     text-align: center;
     margin-bottom: 20px;
     font-size: 45px; }
-  .exit-option-block .math-row {
-    height: 70px; }
   .exit-option-block .money-input {
     display: inline-block; }
   .exit-option-block .math {
@@ -576,9 +628,9 @@ input.typeahead {
       padding-top: 3px;
       margin-right: 10px; }
       .exit-option-block .math .fraction .money-input {
-        font-size: 12.5px; }
+        font-size: 15px; }
         .exit-option-block .math .fraction .money-input input {
-          font-size: 12.5px; }
+          font-size: 15px; }
       .exit-option-block .math .fraction .fraction-top {
         border-bottom: 2px solid black;
         padding-bottom: 5px; }
@@ -596,6 +648,96 @@ input.typeahead {
       font-size: 12.5px; }
     .exit-option-block .math * {
       vertical-align: middle; }
+  @media (max-width: 1040px) {
+    .exit-option-block .math {
+      font-size: 18.75px; }
+      .exit-option-block .math .times-sign {
+        font-size: 12.5px;
+        padding: 0 9.375px 0 11.375px;
+        position: relative;
+        top: 2px; }
+      .exit-option-block .math .minus-sign {
+        margin: 10px; }
+      .exit-option-block .math .equals {
+        margin: 10px; }
+      .exit-option-block .math .big-paren {
+        font-size: 75px;
+        font-weight: 100;
+        position: relative;
+        bottom: 6.25px;
+        padding: 5px; }
+      .exit-option-block .math .fraction {
+        display: inline-block;
+        margin-left: 8px;
+        padding-top: 3px;
+        margin-right: 10px; }
+        .exit-option-block .math .fraction .money-input {
+          font-size: 11.25px; }
+          .exit-option-block .math .fraction .money-input input {
+            font-size: 11.25px; }
+        .exit-option-block .math .fraction .fraction-top {
+          border-bottom: 2px solid black;
+          padding-bottom: 5px; }
+      .exit-option-block .math .fraction-top, .exit-option-block .math .fraction-bottom {
+        display: block !important; }
+      .exit-option-block .math .money-input {
+        font-size: 12.5px; }
+        .exit-option-block .math .money-input input {
+          font-size: 12.5px; }
+      .exit-option-block .math .input-postfix-block {
+        font-size: 12.5px; }
+        .exit-option-block .math .input-postfix-block input {
+          font-size: 12.5px; }
+      .exit-option-block .math .info-text {
+        font-size: 9.375px; }
+      .exit-option-block .math * {
+        vertical-align: middle; } }
+  .exit-option-block .math-row {
+    padding-bottom: 15px; }
+  @media (max-width: 940px) {
+    .exit-option-block .math {
+      font-size: 25px; }
+      .exit-option-block .math .times-sign {
+        font-size: 16.66667px;
+        padding: 0 12.5px 0 14.5px;
+        position: relative;
+        top: 2px; }
+      .exit-option-block .math .minus-sign {
+        margin: 10px; }
+      .exit-option-block .math .equals {
+        margin: 10px; }
+      .exit-option-block .math .big-paren {
+        font-size: 100px;
+        font-weight: 100;
+        position: relative;
+        bottom: 8.33333px;
+        padding: 5px; }
+      .exit-option-block .math .fraction {
+        display: inline-block;
+        margin-left: 8px;
+        padding-top: 3px;
+        margin-right: 10px; }
+        .exit-option-block .math .fraction .money-input {
+          font-size: 15px; }
+          .exit-option-block .math .fraction .money-input input {
+            font-size: 15px; }
+        .exit-option-block .math .fraction .fraction-top {
+          border-bottom: 2px solid black;
+          padding-bottom: 5px; }
+      .exit-option-block .math .fraction-top, .exit-option-block .math .fraction-bottom {
+        display: block !important; }
+      .exit-option-block .math .money-input {
+        font-size: 16.66667px; }
+        .exit-option-block .math .money-input input {
+          font-size: 16.66667px; }
+      .exit-option-block .math .input-postfix-block {
+        font-size: 16.66667px; }
+        .exit-option-block .math .input-postfix-block input {
+          font-size: 16.66667px; }
+      .exit-option-block .math .info-text {
+        font-size: 12.5px; }
+      .exit-option-block .math * {
+        vertical-align: middle; } }
 
 #notes-container {
   padding: 50px; }
@@ -610,7 +752,7 @@ input.typeahead {
     font-weight: 200; }
 
 .card {
-  background-color: #f4f2f0;
+  background-color: white;
   width: 90%;
   max-width: 1000px;
   margin-left: auto;
@@ -635,6 +777,10 @@ input.typeahead {
   top: 0;
   margin: 10px auto 10px auto;
   position: relative; }
+.funding-container.expand .more {
+  display: none; }
+.funding-container.expand .less {
+  display: block; }
 
 .funding-summary {
   z-index: 100;
@@ -644,6 +790,13 @@ input.typeahead {
   right: 0;
   margin: auto;
   box-shadow: 0 2px 5px rgba(30, 30, 30, 0.3); }
+  .funding-summary .more {
+    display: block; }
+  .funding-summary .less {
+    display: none; }
+  .funding-summary .more, .funding-summary .less {
+    font-size: 25px;
+    font-weight: 400; }
 
 .funding-row {
   height: 200px;
@@ -652,7 +805,7 @@ input.typeahead {
   left: 0;
   right: 0;
   margin: auto;
-  box-shadow: 0px 3px 2px -2px rgba(30, 30, 30, 0.3); }
+  box-shadow: 0px 2px 2px -1px rgba(30, 30, 30, 0.3); }
   .funding-row:nth-child(0) {
     z-index: 10;
     top: -127px; }
@@ -683,6 +836,11 @@ input.typeahead {
   .funding-row:nth-child(9) {
     z-index: 1;
     top: 8px; }
+
+.takehome {
+  font-size: 35px;
+  font-weight: 400;
+  vertical-align: bottom; }
 
 .typeahead, .tt-query, .tt-hint {
   width: 400px;

@@ -40,30 +40,31 @@ var SaleCalculator = React.createClass({
     var cashOutPhrase = getCashOutPhrase(takehome);
 
     return (
-      <div className="exit-option-block Grid-cell">
+      <div className="card exit-option-block Grid-cell">
         <h2 className="exit-header">GET ACQUIRED</h2>
 
         <div className="math">
           <div className="math-row">
             <span className="info-block">
-              <div className="money-input">
+              <div className="money-input input-postfix-block">
                 <span className="money-input-dollarsign">$</span>
                 <input 
-                  className={"money-input-field"}
+                  className={"money-input-field input-postfix-field"}
                   type="number"
-                  step="10000000"
+                  step="10"
                   min="0"
                   onChange={function(e) {
-                    this.setState({valuation: intify(e.target.value)})
+                    this.setState({valuation: (e.target.value * 1000000)})
                   }.bind(this)}
-                  defaultValue={this.state.valuation} />
+                  defaultValue={twoDecimalify(this.state.valuation / 1000000)} />
+                <span className="input-postfix-suffix">M</span>
               </div>
               <div className="info-text">sale price</div>
             </span>
             
             <span className="minus-sign">-</span>
             <span className="info-block">
-              <div className="investment">${totalInvestment / 1000000}M</div>
+              <div className="investment">${twoDecimalify(totalInvestment / 1000000)}M</div>
               <div className="info-text">total investment</div>
             </span>
             <span className="times-sign">x</span>
@@ -100,11 +101,11 @@ var SaleCalculator = React.createClass({
             
           </div>
 
-          <div className="math-row">
+          <div className="math-row takehome-row">
             <span className="equals"> = </span>
 
             <span className="info-block">
-              <div>${takehome.toMoney()}</div>
+              <div className="takehome">${takehome.toMoney()}</div>
               <div className="info-text">{cashOutPhrase}</div>
             </span>
           </div>
@@ -146,23 +147,23 @@ var IPOCalculator = React.createClass({
     var cashOutPhrase = getCashOutPhrase(takehome);
 
     return (
-      <div className="exit-option-block Grid-cell">
+      <div className="card exit-option-block Grid-cell">
         <h2 className="exit-header">IPO</h2>
 
-        <div className="math">
-          <div className="math-row">
+          <div className="math math-row">
             <span className="info-block">
-              <div className="money-input">
+              <div className="money-input input-postfix-block">
                 <span className="money-input-dollarsign">$</span>
                 <input 
-                  className={"money-input-field"}
+                  className={"money-input-field input-postfix-field"}
                   type="number"
-                  step="10000000"
+                  step="10"
                   min="0"
                   onChange={function(e) {
-                    this.setState({valuation: intify(e.target.value)})
+                    this.setState({valuation: (e.target.value * 1000000)})
                   }.bind(this)}
-                  defaultValue={this.state.valuation} />
+                  defaultValue={twoDecimalify(this.state.valuation / 1000000)} />
+                <span className="input-postfix-suffix">M</span>
               </div>
               <div className="info-text">sale price</div>
             </span>
@@ -174,18 +175,14 @@ var IPOCalculator = React.createClass({
             </span>
           </div>
 
-          <div className="math-row">
+          <div className="math math-row takehome-row">
             <span className="equals"> = </span>
 
             <span className="info-block">
-              <div>${takehome.toMoney()}</div>
+              <div className="takehome">${takehome.toMoney()}</div>
               <div className="info-text">{cashOutPhrase}</div>
             </span>
           </div>
-
-
-        </div>
-
 
 
         

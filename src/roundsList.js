@@ -31,9 +31,9 @@ var RoundsList = React.createClass({
   updateRound: function(round, i, e) {
     newRound = copyDataObject(round);
     if (hasClass(e.target, "round-amount-input")) {
-      newRound.amount = intify(e.target.value);  
+      newRound.amount = intify(e.target.value * 1000000);  
     } else if (hasClass(e.target, "round-valuation-input")) {
-      newRound.valuation = intify(e.target.value);  
+      newRound.valuation = intify(e.target.value * 1000000);  
     }
     this.onRoundChanged(newRound, i);
   },
@@ -54,7 +54,7 @@ var RoundsList = React.createClass({
                 $(e.target).closest(".funding-container").toggleClass("expand");
               }
             }}>
-            <div className="Grid-cell u-1of3"><h2 className="row-title">{round.name} ROUND</h2></div>
+            <div className="Grid-cell u-1of4"><h2 className="row-title">{round.name} ROUND</h2></div>
             <div className="Grid-cell math-cell">
               <div className="math">
                 <span className="info-block pre-round-equity">
@@ -67,29 +67,31 @@ var RoundsList = React.createClass({
                 
                 <div className="fraction">
                   <div className="fraction-top">
-                    <div className="money-input">
+                    <div className="money-input input-postfix-block">
                       <span className="money-input-dollarsign">$</span>
                       <input
-                        className={"money-input-field round-amount-input investment series-" + round.name + "-amount"}
+                        className={"input-postfix-field money-input-field round-amount-input investment series-" + round.name + "-amount"}
                         type="number"
-                        step="1000000"
+                        step="1"
                         min="0"
                         onChange={this.updateRound.bind(this, round, i)}
-                        defaultValue={round.amount} />
+                        defaultValue={twoDecimalify(round.amount / 1000000)} />
+                      <span className="input-postfix-suffix">M</span>
                     </div>
                     <span className="info-text">invested</span>
                   </div>
 
                   <div className="fraction-bottom">
-                    <div className="money-input">
+                    <div className="money-input input-postfix-block">
                       <span className="money-input-dollarsign">$</span>
                       <input 
-                        className={"money-input-field round-valuation-input series-" + round.name + "-valuation"}
+                        className={"input-postfix-field money-input-field round-valuation-input series-" + round.name + "-valuation"}
                         type="number"
-                        step="1000000"
+                        step="1"
                         min="0"
                         onChange={this.updateRound.bind(this, round, i)}
-                        defaultValue={round.valuation} />
+                        defaultValue={twoDecimalify(round.valuation / 1000000)} />
+                      <span className="input-postfix-suffix">M</span>
                     </div>
                     <span className="info-text">valuation</span>
                   </div>

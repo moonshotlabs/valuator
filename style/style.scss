@@ -1,109 +1,11 @@
 @import 'grid';
 @import 'fonts';
 @import 'normalize.css';
+@import 'mixins';
 
-$background-accent-color: lighten(rgb(147, 128, 108), 45);
+$background-accent-color: white;
+$background-body-color: lighten(rgb(147, 128, 108), 45);
 $shadow-color: rgba(30, 30, 30, 0.3);
-
-@mixin flex-box() {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-@mixin inline-flex() {
-  display: -webkit-inline-box;
-  display: -moz-inline-box;
-  display: -ms-inline-flexbox;
-  display: -webkit-inline-flex;
-  display: inline-flex;
-}
-
-@mixin math($base-size) {
-  .math {
-    font-size: $base-size;
-
-    .times-sign {
-      font-size: (2 * $base-size / 3);
-      padding: 0 ($base-size / 2) 0 ($base-size / 2 + 2px);
-      position: relative;
-      top: 2px;
-    }
-    
-    .minus-sign {
-      margin: 10px;
-    }
-
-    .equals {
-      margin: 10px;
-    }
-
-    .big-paren {
-      font-size: ($base-size * 4);
-      font-weight: 100;
-      position: relative;
-      bottom: ($base-size / 3);
-      padding: 5px;
-    }
-
-    .fraction {
-      $money-input-size: ($base-size / 2);
-
-      display: inline-block;
-      margin-left: 8px;
-      padding-top: 3px;
-      margin-right: 10px;
-
-      .money-input {
-        font-size: $money-input-size;
-
-        input {
-          font-size: $money-input-size;
-        }
-      }
-      
-      .fraction-top {
-        border-bottom: 2px solid black;
-        padding-bottom: 5px;
-      }
-    }
-
-    .fraction-top, .fraction-bottom {
-      display: block !important;
-    }
-
-    $money-input-size: (2 * $base-size / 3);
-    .money-input {
-      font-size: $money-input-size;
-
-      input {
-        font-size: $money-input-size;
-      }
-    }
-
-    .input-postfix-block {
-      font-size: $money-input-size;
-
-      input {
-        font-size: $money-input-size;
-      }
-    }
-    
-    .info-text {
-      font-size: ($base-size / 2);
-    }
-
-    * {
-      vertical-align: middle;
-    }
-  }
-}
-
-@mixin serif() {
-  font-family: "Georgia Pro", serif;
-}
 
 .input-postfix-block {
   @include inline-flex();
@@ -111,6 +13,7 @@ $shadow-color: rgba(30, 30, 30, 0.3);
 
   .input-postfix-field {
     flex: 1;
+    max-width: 3em;
     border-radius: 2px 0 0 2px;
     margin: 0px;
     border-right: 0;
@@ -119,7 +22,7 @@ $shadow-color: rgba(30, 30, 30, 0.3);
 
   .input-postfix-suffix {
     border-radius: 0 2px 2px 0;
-    background-color: $background-accent-color;
+    background-color: $background-body-color;
   }
 
   * {
@@ -140,7 +43,7 @@ h1, h2, h3, h4, h5 {
 
 body {
   margin: 0px;
-  // background: #ddd;
+  background: $background-body-color;
   color: #222;
   font-family: "Helvetica Neue";
   font-weight: 200;
@@ -169,7 +72,7 @@ select {
 }
 
 .highlight-background {
-  background-color: rgba(147, 128, 108, 0.1);
+  // background-color: $background-accent-color;
 }
 
 .page-header {
@@ -239,7 +142,7 @@ input.typeahead {
 
 .math-cell {
   @include flex-box();
-  @include math(30px);
+  @include math-responsive(30px);
 
   -webkit-box-align: center;
   -webkit-align-items: center;
@@ -265,12 +168,12 @@ input.typeahead {
     border-radius: 0 2px 2px 0;
     margin: 0px;
     border-left: 0;
-    max-width: 9em;
+    max-width: 5em;
   }
 
   .money-input-dollarsign {
     border-radius: 2px 0 0 2px;
-    background-color: $background-accent-color;
+    background-color: $background-body-color;
   }
 
   * {
@@ -305,19 +208,26 @@ input.typeahead {
 }
 
 .exit-divider {
-  margin-top: 40px;
+  margin-top: 20px;
   text-align: center;
-  line-height: 3.5;
+  line-height: 1.5;
   font-size: 35px;
 }
 
 .exit-option-block {
+  @include flex-box();
+  flex-direction: column;
+  justify-content: space-between !important;
+  align-items: center !important;
+
   padding-top: 40px;
   text-align: center !important;
   position: relative;
   align-items: flex-start;
   justify-content: center;
   margin-bottom: 40px;
+  margin-left: 20px !important;
+  margin-right: 20px !important;
 
   .exit-header {
     text-align: center;
@@ -325,16 +235,21 @@ input.typeahead {
     font-size: 45px;
   }
   
-  .math-row {
-    height: 70px;
-  }
-
   .money-input {
     display: inline-block;
     // line-height: 1.2;
   }
 
-  @include math(25px);
+  @include math-responsive(25px);
+  .math-row {
+    padding-bottom: 15px;
+  }
+
+  min-width: 430px;
+  @media (max-width: 940px) {
+    @include math(25px);
+  }
+  
 }
 
 #notes-container {
@@ -391,6 +306,14 @@ $funding-row-height: 200px;
     margin: 10px auto 10px auto;
     position: relative;
   }
+
+  .more {
+    display: none;
+  }
+
+  .less {
+    display: block;
+  }
 }
 
 .funding-summary {
@@ -401,6 +324,19 @@ $funding-row-height: 200px;
   right: 0;
   margin: auto;
   box-shadow: 0 2px 5px $shadow-color;
+
+  .more {
+    display: block;
+  }
+
+  .less {
+    display: none;
+  }
+
+  .more, .less {
+    font-size: 25px;
+    font-weight: 400;
+  }
 }
 
 
@@ -411,7 +347,7 @@ $funding-row-height: 200px;
   left: 0;
   right: 0;
   margin: auto;
-  box-shadow: 0px 3px 2px -2px $shadow-color;
+  box-shadow: 0px 2px 2px -1px $shadow-color;
 
   @for $child from 0 to 10 {
     &:nth-child( #{$child} ) {
@@ -421,7 +357,11 @@ $funding-row-height: 200px;
   }
 }
 
-
+.takehome {
+  font-size: 35px;
+  font-weight: 400;
+  vertical-align: bottom;
+}
 
 
 

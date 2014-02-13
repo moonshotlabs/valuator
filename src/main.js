@@ -14,13 +14,15 @@ var FundingSummary = React.createClass({
             $(e.target).closest(".funding-container").toggleClass("expand");
           }
         }}>
-        <div className="Grid-cell u-1of3"><h2 className="row-title">FUNDING</h2></div>
+        <div className="Grid-cell u-1of4"><h2 className="row-title">FUNDING</h2></div>
         <div className="Grid-cell">
           Then we raised {this.props.dilutingRoundsCount} more {pluralizedRounds},
           leaving me with 
           <span className="equity">{twoDecimalify(this.props.finalEquity)}%</span>
           of the company.
         </div>
+        <div className="more">+</div>
+        <div className="less">-</div>
       </div>
     )
   }

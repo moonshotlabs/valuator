@@ -1,0 +1,106 @@
+@mixin flex-box() {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin inline-flex() {
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+}
+
+@mixin math($base-size) {
+  .math {
+    font-size: $base-size;
+
+    .times-sign {
+      font-size: (2 * $base-size / 3);
+      padding: 0 ($base-size / 2) 0 ($base-size / 2 + 2px);
+      position: relative;
+      top: 2px;
+    }
+    
+    .minus-sign {
+      margin: 10px;
+    }
+
+    .equals {
+      margin: 10px;
+    }
+
+    .big-paren {
+      font-size: ($base-size * 4);
+      font-weight: 100;
+      position: relative;
+      bottom: ($base-size / 3);
+      padding: 5px;
+    }
+
+    .fraction {
+      $money-input-size: (3 * $base-size / 5);
+
+      display: inline-block;
+      margin-left: 8px;
+      padding-top: 3px;
+      margin-right: 10px;
+
+      .money-input {
+        font-size: $money-input-size;
+
+        input {
+          font-size: $money-input-size;
+        }
+      }
+      
+      .fraction-top {
+        border-bottom: 2px solid black;
+        padding-bottom: 5px;
+      }
+    }
+
+    .fraction-top, .fraction-bottom {
+      display: block !important;
+    }
+
+    $money-input-size: (2 * $base-size / 3);
+    .money-input {
+      font-size: $money-input-size;
+
+      input {
+        font-size: $money-input-size;
+      }
+    }
+
+    .input-postfix-block {
+      font-size: $money-input-size;
+
+      input {
+        font-size: $money-input-size;
+      }
+    }
+    
+    .info-text {
+      font-size: ($base-size / 2);
+    }
+
+    * {
+      vertical-align: middle;
+    }
+  }
+}
+
+@mixin math-responsive($base-size) {
+  @include math($base-size);
+  @media (max-width: 1040px) {
+    @include math(3 * $base-size / 4);
+  }
+}
+
+@mixin serif() {
+  font-family: "Georgia Pro", serif;
+}
