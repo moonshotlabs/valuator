@@ -783,7 +783,7 @@ input.typeahead {
   display: block; }
 
 .funding-summary {
-  z-index: 100;
+  z-index: 20;
   position: absolute;
   top: 0px;
   left: 0;
