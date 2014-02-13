@@ -61,7 +61,6 @@ var ValueCalculator = React.createClass({
       + ".js?api_key=zmsprfmrueqhn9dqt7ds2z87"
       + "&callback=?";
       $.getJSON(searchUrl, function(data) {
-        console.log(data);
         var newState = {
           companyName: data.name,
           companyId: data.permalink,
@@ -108,7 +107,6 @@ var ValueCalculator = React.createClass({
         newState.startingRound = newRounds[Math.max(newRounds.length - 4, 0)].id;
 
         newState.rounds = newRounds;
-        console.log(JSON.stringify(newState));
         this.setState(newState);
       }.bind(this));
   },
@@ -205,6 +203,7 @@ $('.typeahead').typeahead(null, {
   app.fetchCompany(suggestion.permalink);
 }).on("typeahead:autocompleted", function(e, suggestion, dataset) {
   app.fetchCompany(suggestion.permalink);
+  $('.typeahead').typeahead('close');
 });
 
 
